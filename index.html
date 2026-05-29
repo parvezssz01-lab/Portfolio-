@@ -1,273 +1,1047 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuzzi Official | Luxury Custom Print Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        :root { 
-            --bg-dark: #0a0a0a; 
-            --card-bg: #141414;
-            --accent-gold: #c5a880; 
-            --text-light: #ffffff; 
-            --text-muted: #a0a0a0; 
-            --border-color: #262626;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nuzzi Official — Custom Print Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-        body { 
-            background-color: var(--bg-dark); 
-            color: var(--text-light); 
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.7; 
-            overflow-x: hidden;
-        }
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+    :root {
+      --ink:        #0d0d0d;
+      --ink-soft:   #1a1a1a;
+      --parchment:  #f7f4ef;
+      --cream:      #fdfcfa;
+      --gold:       #b8912a;
+      --gold-light: #d4a843;
+      --gold-pale:  #f0e4c4;
+      --rust:       #8b4a2b;
+      --slate:      #4a4a4a;
+      --mist:       #9a9690;
+      --rule:       #ddd8d0;
+      --white:      #ffffff;
+    }
 
-        /* Premium Navigation */
-        header { 
-            background: rgba(10, 10, 10, 0.9); 
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color); 
-            position: sticky; 
-            top: 0; 
-            z-index: 100; 
-        }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 25px 0; }
-        .logo { 
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px; 
-            font-weight: 600; 
-            color: var(--text-light); 
-            letter-spacing: 4px; 
-        }
-        .nav-links a { 
-            text-decoration: none; 
-            color: var(--text-muted); 
-            margin-left: 35px; 
-            font-weight: 400; 
-            font-size: 13px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
-        }
-        .nav-links a:hover { color: var(--accent-gold); }
+    html { scroll-behavior: smooth; font-size: 16px; }
 
-        /* Hero Section */
-        .hero { 
-            padding: 140px 0 100px 0; 
-            text-align: center; 
-            border-bottom: 1px solid var(--border-color);
-        }
-        .hero h1 { 
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 64px; 
-            font-weight: 400; 
-            letter-spacing: 2px;
-            margin-bottom: 25px; 
-            line-height: 1.2;
-        }
-        .hero h1 span { font-style: italic; color: var(--accent-gold); }
-        .hero p { 
-            font-size: 16px; 
-            font-weight: 300;
-            color: var(--text-muted); 
-            max-width: 650px; 
-            margin: 0 auto 40px auto; 
-            letter-spacing: 1px;
-        }
-        .btn-cta { 
-            display: inline-block; 
-            background: transparent; 
-            color: var(--text-light); 
-            padding: 14px 40px; 
-            text-decoration: none; 
-            border: 1px solid var(--accent-gold);
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: all 0.4s ease;
-        }
-        .btn-cta:hover { 
-            background: var(--accent-gold); 
-            color: var(--bg-dark); 
-            box-shadow: 0 10px 20px rgba(197, 168, 128, 0.15);
-        }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
-        /* Portfolio Section */
-        .section-title { 
-            text-align: center; 
-            margin: 100px 0 60px 0; 
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 40px; 
-            font-weight: 400; 
-            letter-spacing: 3px;
-        }
-        .section-title span { color: var(--accent-gold); }
-        
-        .portfolio-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); 
-            gap: 40px; 
-            margin-bottom: 120px; 
-        }
-        .portfolio-item { 
-            background: var(--card-bg); 
-            border: 1px solid var(--border-color);
-            overflow: hidden; 
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .img-container {
-            width: 100%;
-            height: 360px;
-            overflow: hidden;
-            background: #1a1a1a;
-        }
-        .portfolio-item img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            display: block; 
-            transition: transform 0.6s ease;
-        }
-        .portfolio-item:hover {
-            border-color: var(--accent-gold);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        }
-        .portfolio-item:hover img { 
-            transform: scale(1.05); 
-        }
-        .portfolio-info { padding: 25px; background: var(--card-bg); }
-        .portfolio-info span { 
-            font-size: 11px; 
-            text-transform: uppercase; 
-            color: var(--accent-gold); 
-            font-weight: 500; 
-            letter-spacing: 2px;
-            display: block;
-            margin-bottom: 8px;
-        }
-        .portfolio-info h3 { 
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 22px; 
-            color: var(--text-light); 
-            font-weight: 400;
-            letter-spacing: 1px;
-        }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a   { text-decoration: none; color: inherit; }
+    ul  { list-style: none; }
 
-        /* Contact Section */
-        .contact-section { 
-            background: #0e0e0e; 
-            border-top: 1px solid var(--border-color);
-            padding: 120px 0; 
-            text-align: center; 
-        }
-        .contact-section h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 42px;
-            font-weight: 400;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-        }
-        .contact-section p {
-            color: var(--text-muted);
-            font-size: 15px;
-            margin-bottom: 40px;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-        .email-link { 
-            font-size: 24px; 
-            color: var(--accent-gold); 
-            text-decoration: none; 
-            font-weight: 300; 
-            letter-spacing: 1px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--accent-gold); 
-            transition: opacity 0.3s ease;
-        }
-        .email-link:hover { opacity: 0.8; }
+    .wrap    { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+    .wrap-sm { max-width: 860px;  margin: 0 auto; padding: 0 48px; }
 
-        footer { 
-            background: #050505; 
-            border-top: 1px solid var(--border-color);
-            color: #555555; 
-            text-align: center; 
-            padding: 35px 0; 
-            font-size: 12px; 
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+    .eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
 
-        @media (max-width: 768px) { 
-            .hero h1 { font-size: 42px; } 
-            .nav-container { flex-direction: column; gap: 20px; text-align: center; } 
-            .nav-links a { margin: 0 12px; font-size: 11px; } 
-            .portfolio-grid { grid-template-columns: 1fr; gap: 30px; }
-        }
-    </style>
+    .rule-h {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 14px;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: rgba(253, 252, 250, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 74px;
+    }
+
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .nav-logo-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .nav-logo-sub {
+      font-family: 'Jost', sans-serif;
+      font-size: 8.5px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+    }
+    .nav-links a {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--slate);
+      transition: color 0.25s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--ink);
+      padding: 11px 24px;
+      border: 1px solid var(--ink);
+      transition: all 0.3s ease;
+    }
+    .nav-cta:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--white);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 74px;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 64px 80px 48px;
+      background: var(--parchment);
+      border-right: 1px solid var(--rule);
+      position: relative;
+    }
+
+    .hero-ornament {
+      position: absolute;
+      top: 60px; right: 48px;
+      font-family: 'Playfair Display', serif;
+      font-size: 160px;
+      font-weight: 700;
+      color: var(--rule);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.3s forwards;
+    }
+
+    .hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(44px, 4.5vw, 68px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      color: var(--ink);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.5s forwards;
+    }
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-body {
+      font-size: 15px;
+      color: var(--mist);
+      max-width: 420px;
+      line-height: 1.9;
+      margin-bottom: 44px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.7s forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.9s forwards;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--white);
+      padding: 14px 32px;
+      border: 1px solid var(--ink);
+      transition: all 0.35s ease;
+    }
+    .btn-primary:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      background: transparent;
+      color: var(--ink);
+      padding: 14px 32px;
+      border: 1px solid var(--rule);
+      transition: all 0.35s ease;
+    }
+    .btn-secondary:hover {
+      border-color: var(--ink);
+      background: var(--parchment);
+    }
+
+    .hero-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 3px;
+      background: var(--rule);
+    }
+
+    .hero-img-wrap {
+      overflow: hidden;
+      background: var(--parchment);
+    }
+    .hero-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+    .hero-img-wrap:hover img { transform: scale(1.06); }
+    .hero-img-wrap:nth-child(1) { grid-row: span 2; }
+
+    .ticker {
+      background: var(--ink);
+      overflow: hidden;
+      padding: 16px 0;
+      border-top: 1px solid #222;
+      border-bottom: 1px solid #222;
+    }
+    .ticker-track {
+      display: flex;
+      gap: 0;
+      animation: ticker 25s linear infinite;
+      white-space: nowrap;
+    }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+      padding: 0 40px;
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      flex-shrink: 0;
+    }
+    .ticker-item span {
+      color: var(--gold-light);
+      font-size: 8px;
+    }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .stats-row {
+      background: var(--parchment);
+      border-bottom: 1px solid var(--rule);
+    }
+    .stats-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stat-cell {
+      padding: 40px 0;
+      text-align: center;
+      border-right: 1px solid var(--rule);
+    }
+    .stat-cell:last-child { border-right: none; }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--mist);
+    }
+
+    .section-intro {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 52px;
+    }
+    .section-intro-eyebrow { margin-bottom: 10px; }
+    .section-intro-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 3.5vw, 46px);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.3px;
+    }
+    .section-intro-title em { font-style: italic; color: var(--gold); }
+    .section-intro-count {
+      font-family: 'Playfair Display', serif;
+      font-size: 100px;
+      font-weight: 700;
+      color: var(--rule);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .collection-section { padding: 96px 0 120px; }
+
+    .tabs-row {
+      display: flex;
+      gap: 0;
+      margin-bottom: 56px;
+    }
+    .tab-btn {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 13px 28px;
+      background: none;
+      border: 1px solid var(--rule);
+      border-right: none;
+      color: var(--mist);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .tab-btn:last-child { border-right: 1px solid var(--rule); }
+    .tab-btn:hover { color: var(--ink); background: var(--parchment); }
+    .tab-btn.active {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--white);
+    }
+
+    .cat-panel { display: none; }
+    .cat-panel.active { display: block; }
+
+    .grid-blanket {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 400px 380px;
+      gap: 3px;
+    }
+    .grid-blanket .card:nth-child(1) { grid-column: 1 / 3; }
+    .grid-blanket .card:nth-child(5) { grid-column: 2 / 4; }
+
+    .grid-bedding {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 300px;
+      gap: 3px;
+    }
+    .grid-bedding .card:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+
+    .grid-apparel {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 380px;
+      gap: 3px;
+    }
+    .grid-apparel .card:nth-child(1) { grid-row: span 2; }
+
+    .grid-mug {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-auto-rows: 520px;
+      gap: 3px;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      background: var(--parchment);
+    }
+
+    .card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      display: block;
+    }
+    .card:hover img { transform: scale(1.07); }
+
+    .card-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 32px 24px 24px;
+      background: linear-gradient(to top, rgba(10,10,10,0.80) 0%, transparent 100%);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .card:hover .card-info { opacity: 1; transform: translateY(0); }
+
+    .card-tag {
+      font-family: 'Jost', sans-serif;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 5px;
+    }
+    .card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.25;
+    }
+
+    .about-band {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 540px;
+    }
+
+    .about-visual {
+      background: var(--ink);
+      position: relative;
+      overflow: hidden;
+    }
+    .about-visual-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.55;
+      display: block;
+    }
+    .about-visual-label {
+      position: absolute;
+      bottom: 36px; left: 36px;
+      font-family: 'Playfair Display', serif;
+      font-size: 64px;
+      font-weight: 700;
+      font-style: italic;
+      color: rgba(255,255,255,0.08);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .about-copy {
+      background: var(--parchment);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 72px 64px;
+      border-left: 1px solid var(--rule);
+    }
+    .about-copy .eyebrow { margin-bottom: 20px; }
+    .about-copy h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 2.8vw, 40px);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 22px;
+    }
+    .about-copy h2 em { font-style: italic; color: var(--gold); }
+    .about-copy p {
+      font-size: 14px;
+      color: var(--mist);
+      line-height: 1.9;
+      max-width: 420px;
+      margin-bottom: 16px;
+    }
+    .about-copy p:last-of-type { margin-bottom: 36px; }
+    .about-rule { width: 48px; height: 1px; background: var(--gold); margin: 28px 0; }
+
+    .process-section { padding: 100px 0 110px; background: var(--cream); }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--rule);
+      margin-top: 56px;
+    }
+    .process-card {
+      padding: 40px 32px 44px;
+      border-right: 1px solid var(--rule);
+      transition: background 0.3s;
+      position: relative;
+    }
+    .process-card:last-child { border-right: none; }
+    .process-card:hover { background: var(--parchment); }
+
+    .process-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 56px;
+      font-weight: 400;
+      color: var(--rule);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .process-name {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .process-desc { font-size: 13px; color: var(--mist); line-height: 1.85; }
+    .process-accent {
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--gold);
+      transition: width 0.4s ease;
+    }
+    .process-card:hover .process-accent { width: 100%; }
+
+    .testimonial-section { background: var(--ink); padding: 90px 0; text-align: center; }
+    .testimonial-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 3vw, 34px);
+      font-weight: 400;
+      font-style: italic;
+      color: rgba(255,255,255,0.88);
+      max-width: 760px;
+      margin: 0 auto 28px;
+      line-height: 1.5;
+    }
+    .testimonial-quote::before { content: '\201C'; color: var(--gold); }
+    .testimonial-quote::after  { content: '\201D'; color: var(--gold); }
+    .testimonial-attr {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .cta-section {
+      padding: 110px 0;
+      background: var(--parchment);
+      border-top: 1px solid var(--rule);
+      text-align: center;
+    }
+    .cta-email {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(20px, 2.5vw, 30px);
+      font-weight: 400;
+      color: var(--gold);
+      border-bottom: 1px solid var(--gold-pale);
+      padding-bottom: 6px;
+      transition: border-color 0.3s;
+    }
+    .cta-email:hover { border-color: var(--gold); }
+    .cta-divider { width: 1px; height: 60px; background: var(--rule); margin: 44px auto; }
+    .cta-tagline {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 13px;
+      font-style: italic;
+      color: var(--mist);
+      letter-spacing: 0.5px;
+    }
+
+    .site-footer { background: var(--ink); color: rgba(255,255,255,0.35); padding: 44px 48px; }
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 20px;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px; font-weight: 700;
+      letter-spacing: 6px; text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+    .footer-copy { font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; }
+    .footer-nav { display: flex; gap: 28px; }
+    .footer-nav a {
+      font-family: 'Jost', sans-serif; font-size: 10px;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); transition: color 0.25s;
+    }
+    .footer-nav a:hover { color: var(--gold-light); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1100px) {
+      .grid-blanket  { grid-template-rows: 360px 340px; }
+      .grid-bedding  { grid-template-columns: repeat(3, 1fr); }
+      .grid-bedding .card:nth-child(1) { grid-column: span 1; grid-row: span 1; }
+      .process-grid  { grid-template-columns: repeat(2, 1fr); }
+      .process-card  { border-bottom: 1px solid var(--rule); }
+    }
+    @media (max-width: 900px) {
+      .wrap, .wrap-sm { padding: 0 24px; }
+      .hero          { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left     { padding: 60px 24px; order: 2; }
+      .hero-right    { height: 60vw; min-height: 280px; order: 1; }
+      .hero-ornament { display: none; }
+      .about-band    { grid-template-columns: 1fr; }
+      .about-visual  { height: 300px; }
+      .about-copy    { padding: 52px 24px; }
+      .section-intro { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .section-intro-count { display: none; }
+      .grid-blanket  { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .grid-blanket .card { min-height: 260px; }
+      .grid-blanket .card:nth-child(1),
+      .grid-blanket .card:nth-child(5) { grid-column: 1 / 3; }
+      .grid-bedding  { grid-template-columns: 1fr 1fr; grid-auto-rows: 240px; }
+      .grid-apparel  { grid-template-columns: 1fr 1fr; }
+      .grid-apparel .card:nth-child(1) { grid-row: span 1; }
+      .grid-mug      { grid-auto-rows: 360px; }
+      .stats-inner   { grid-template-columns: repeat(2, 1fr); }
+      .stat-cell:nth-child(2) { border-right: none; }
+      .footer-nav    { display: none; }
+    }
+    @media (max-width: 560px) {
+      .nav-links { display: none; }
+      .hero-h1   { font-size: 36px; }
+      .grid-blanket, .grid-bedding, .grid-apparel, .grid-mug { grid-template-columns: 1fr; }
+      .grid-blanket .card, .grid-bedding .card,
+      .grid-apparel .card, .grid-mug .card { min-height: 280px; grid-column: 1 !important; grid-row: span 1 !important; }
+      .stats-inner  { grid-template-columns: repeat(2, 1fr); }
+      .process-grid { grid-template-columns: 1fr; }
+      .tabs-row { overflow-x: auto; padding-bottom: 2px; }
+      .tab-btn  { flex-shrink: 0; }
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <div class="container nav-container">
-            <div class="logo">NUZZI</div>
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#portfolio">Our Work</a>
-                <a href="#contact">Inquire</a>
-            </div>
-        </div>
-    </header>
+  <header class="site-header">
+    <div class="wrap nav-inner">
+      <a href="#home" class="nav-logo">
+        <span class="nav-logo-name">Nuzzi</span>
+        <span class="nav-logo-sub">Custom Print Studio</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#collection">Collection</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="#contact" class="nav-cta">Order Now</a>
+    </div>
+  </header>
 
-    <section id="home" class="hero">
-        <div class="container">
-            <h1>Bespoke <span>Print Designs</span></h1>
-            <p>Curating high-end bespoke layouts for everyday essentials. Specializing in premium custom blankets, luxury bedding concepts, and elite corporate merchandise.</p>
-            <a href="#contact" class="btn-cta">Commission Work</a>
-        </div>
-    </section>
+  <section id="home" class="hero">
+    <div class="hero-left">
+      <div class="hero-ornament">N</div>
+      <div class="hero-eyebrow">
+        <span class="rule-h"></span>
+        <span class="eyebrow">Est. 2024 &nbsp;·&nbsp; Premium Custom Print</span>
+      </div>
+      <h1 class="hero-h1">
+        Where Every<br>Memory Becomes<br><em>Timeless.</em>
+      </h1>
+      <p class="hero-body">
+        Handcrafted custom print pieces — from plush blankets
+        and luxury bedding to premium apparel and artisan
+        drinkware. Made to order, made to last.
+      </p>
+      <div class="hero-actions">
+        <a href="#collection" class="btn-primary">View Collection</a>
+        <a href="#contact"    class="btn-secondary">Commission Work</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img-wrap"><img src="images/b5.jpg" alt="Custom blanket" /></div>
+      <div class="hero-img-wrap"><img src="images/a1.jpg" alt="Custom apparel" /></div>
+      <div class="hero-img-wrap"><img src="images/d1.jpg" alt="Custom bedding" /></div>
+    </div>
+  </section>
 
-    <section id="portfolio" class="container">
-        <h2 class="section-title">Selected <span>Creations</span></h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-item"><div class="img-container"><img src="1.jpg.jpg" alt="Blanket"></div><div class="portfolio-info"><span>Blanket</span><h3>Premium Custom Fleece Blanket</h3></div></div>
-            <div class="portfolio-item"><div class="img-container"><img src="2.jpg.jpg" alt="Blanket"></div><div class="portfolio-info"><span>Blanket</span><h3>Personalized Cozy Photo Blanket</h3></div></div>
-            <div class="portfolio-item"><div class="img-container"><img src="3.jpg.jpg" alt="Blanket"></div><div class="portfolio-info"><span>Blanket</span><h3>Custom Print Family Keepsake</h3></div></div>
-            <div class="portfolio-item"><div class="img-container"><img src="4.jpg.jpg" alt="Blanket"></div><div class="portfolio-info"><span>Blanket</span><h3>Luxury Anniversary Gift Blanket</h3></div></div>
-            <div class="portfolio-item"><div class="img-container"><img src="5.jpg.jpg" alt="Bedding"></div><div class="portfolio-info"><span>Bedding</span><h3>Premium Custom Print Bedsheet</h3></div></div>
-            
-            <div class="portfolio-item"><div class="img-container"><img src="6.jpg.jpg" alt="Drinkware"></div><div class="portfolio-info"><span>Drinkware</span><h3>Custom Ceramic Photo Mug</h3></div></div>
-            <div class="portfolio-item"><div class="img-container"><img src="7.jpg.jpg" alt="Drinkware"></div><div class="portfolio-info"><span>Drinkware</span><h3>Personalized Design Coffee Mug</h3></div></div>
-            
-            <div class="portfolio-item"><div class="img-container"><img src="8.jpg.jpg" alt="Apparel"></div><div class="portfolio-info"><span>Apparel</span><h3>Custom Graphic Layout Apparel</h3></div></div>
-            <div class="portfolio-item"><div class="img-container"><img src="9.jpg.jpg" alt="Apparel"></div><div class="portfolio-info"><span>Apparel</span><h3>Personalized Typography Streetwear</h3></div></div>
-            
-            <div class="portfolio-item"><div class="img-container"><img src="10.jpg.jpg" alt="Merchandise"></div><div class="portfolio-info"><span>Merchandise</span><h3>Bespoke Custom Print Essential</h3></div></div>
-            <div class="portfolio-item"><div class="img-container"><img src="11.jpg.jpg" alt="Merchandise"></div><div class="portfolio-info"><span>Merchandise</span><h3>Exclusive Tailored Placement Print</h3></div></div>
-            <div class="portfolio-item"><div class="img-container"><img src="12.jpg.jpg" alt="Merchandise"></div><div class="portfolio-info"><span>Merchandise</span><h3>Luxury Personalized Collection</h3></div></div>
-        </div>
-    </section>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item">Custom Blankets <span>✦</span></span>
+      <span class="ticker-item">Luxury Bedding <span>✦</span></span>
+      <span class="ticker-item">Premium Apparel <span>✦</span></span>
+      <span class="ticker-item">Photo Drinkware <span>✦</span></span>
+      <span class="ticker-item">Made to Order <span>✦</span></span>
+      <span class="ticker-item">Ships in 48 Hours <span>✦</span></span>
+      <span class="ticker-item">100% Custom <span>✦</span></span>
+      <span class="ticker-item">American Quality <span>✦</span></span>
+      <span class="ticker-item">Custom Blankets <span>✦</span></span>
+      <span class="ticker-item">Luxury Bedding <span>✦</span></span>
+      <span class="ticker-item">Premium Apparel <span>✦</span></span>
+      <span class="ticker-item">Photo Drinkware <span>✦</span></span>
+      <span class="ticker-item">Made to Order <span>✦</span></span>
+      <span class="ticker-item">Ships in 48 Hours <span>✦</span></span>
+      <span class="ticker-item">100% Custom <span>✦</span></span>
+      <span class="ticker-item">American Quality <span>✦</span></span>
+    </div>
+  </div>
 
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2>Start Your Project</h2>
-            <p>Collaborate with us to translate your visions into premium tangible art.</p>
-            <a href="mailto:nuzziofficial@gmail.com" class="email-link">nuzziofficial@gmail.com</a>
-        </div>
-    </section>
+  <div class="stats-row">
+    <div class="wrap stats-inner">
+      <div class="stat-cell reveal">
+        <div class="stat-num">500<span style="color:var(--gold);font-size:28px">+</span></div>
+        <div class="stat-label">Happy Clients</div>
+      </div>
+      <div class="stat-cell reveal">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Product Lines</div>
+      </div>
+      <div class="stat-cell reveal">
+        <div class="stat-num">100<span style="color:var(--gold);font-size:28px">%</span></div>
+        <div class="stat-label">Custom Made</div>
+      </div>
+      <div class="stat-cell reveal">
+        <div class="stat-num">48<span style="color:var(--gold);font-size:22px;font-family:'Jost'">h</span></div>
+        <div class="stat-label">Avg. Turnaround</div>
+      </div>
+    </div>
+  </div>
 
-    <footer>
-        <p>&copy; 2026 Nuzzi Official. Cultivating Exceptional Print Standards.</p>
-    </footer>
+  <section id="collection" class="collection-section">
+    <div class="wrap">
+
+      <div class="section-intro reveal">
+        <div class="section-intro-left">
+          <div class="section-intro-eyebrow">
+            <span class="rule-h"></span>
+            <span class="eyebrow">Our Work</span>
+          </div>
+          <h2 class="section-intro-title">The <em>Collection</em></h2>
+        </div>
+        <div class="section-intro-count" aria-hidden="true">01</div>
+      </div>
+
+      <div class="tabs-row">
+        <button class="tab-btn active" onclick="showTab('blankets', this)">Blankets</button>
+        <button class="tab-btn"        onclick="showTab('bedding',  this)">Bedding</button>
+        <button class="tab-btn"        onclick="showTab('apparel',  this)">Apparel</button>
+        <button class="tab-btn"        onclick="showTab('mugs',     this)">Drinkware</button>
+      </div>
+
+      <div class="cat-panel active" id="panel-blankets">
+        <div class="grid-blanket">
+          <div class="card">
+            <img src="images/b1.jpg" alt="Photo Text Blanket" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Custom Photo</p><h3 class="card-name">Letter Print Blanket</h3></div>
+          </div>
+          <div class="card">
+            <img src="images/b2.jpg" alt="Family Collage Blanket" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Multi-Photo Collage</p><h3 class="card-name">Family Memory Blanket</h3></div>
+          </div>
+          <div class="card">
+            <img src="images/b3.jpg" alt="Couple Love Blanket" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Couple's Edition</p><h3 class="card-name">Photo Grid Throw</h3></div>
+          </div>
+          <div class="card">
+            <img src="images/b4.jpg" alt="Letter Blanket" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Sentimental Gift</p><h3 class="card-name">Keepsake Message Blanket</h3></div>
+          </div>
+          <div class="card">
+            <img src="images/b5.jpg" alt="Full Photo Blanket" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Full-Print Fleece</p><h3 class="card-name">Portrait Blanket</h3></div>
+          </div>
+          <div class="card">
+            <img src="images/b6.jpg" alt="Dual Layout Blanket" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Dual Photo</p><h3 class="card-name">Split Layout Throw</h3></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-panel" id="panel-bedding">
+        <div class="grid-bedding">
+          <div class="card">
+            <img src="images/d2.jpg" alt="Dog Collage Bedsheet" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Full-Print Bedsheet</p><h3 class="card-name">Dogs in Bloom</h3></div>
+          </div>
+          <div class="card">
+            <img src="images/d1.jpg" alt="Multi-Cat Bedsheet" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Cat Collection</p><h3 class="card-name">Floral Cats Bedsheet</h3></div>
+          </div>
+          <div class="card">
+            <img src="images/d3.jpg" alt="Kitten Bedsheet" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Photo Print</p><h3 class="card-name">Tabby Duo Bedsheet</h3></div>
+          </div>
+          <div class="card">
+            <img src="images/d4.jpg" alt="Lavender Cat Bedsheet" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Art Print</p><h3 class="card-name">Lavender & Cats</h3></div>
+          </div>
+          <div class="card">
+            <img src="images/d5.jpg" alt="Custom Dog Name Bedsheet" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Custom Name</p><h3 class="card-name">Personalized Pet Bedsheet</h3></div>
+          </div>
+          <div class="card">
+            <img src="images/d6.jpg" alt="Custom Cat Name Bedsheet" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Custom Name</p><h3 class="card-name">Cat Name Bedsheet</h3></div>
+          </div>
+          <div class="card">
+            <img src="images/d7.jpg" alt="Funny Dogs Blanket" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Fun Collection</p><h3 class="card-name">Happy Dogs Throw</h3></div>
+          </div>
+          <div class="card">
+            <img src="images/d8.jpg" alt="Custom Pet Bedding Set" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Luxury Bedding Set</p><h3 class="card-name">Custom Pet Bedding</h3></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-panel" id="panel-apparel">
+        <div class="grid-apparel">
+          <div class="card">
+            <img src="images/a1.jpg" alt="Boyfriend Version Tee" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Custom Photo Tee</p><h3 class="card-name">Boyfriend's Version</h3></div>
+          </div>
+          <div class="card">
+            <img src="images/a2.jpg" alt="Couple Vintage Tee" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Couple's Edition</p><h3 class="card-name">Vintage Couple Tee</h3></div>
+          </div>
+          <div class="card">
+            <img src="images/a3.jpg" alt="Love Thy Neighbor Tee" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Graphic Tee</p><h3 class="card-name">Love Thy Neighbor</h3></div>
+          </div>
+          <div class="card">
+            <img src="images/a4.jpg" alt="Retro Slogan Tee" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Retro Print</p><h3 class="card-name">Retro Harmony Tee</h3></div>
+          </div>
+          <div class="card">
+            <img src="images/a5.jpg" alt="Homeowner Era Tee" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Milestone</p><h3 class="card-name">Homeowner Era Tee</h3></div>
+          </div>
+          <div class="card">
+            <img src="images/a6.jpg" alt="New Home Owner Tee" loading="lazy" />
+            <div class="card-info"><p class="card-tag">New Home</p><h3 class="card-name">New Home Owner Tee</h3></div>
+          </div>
+          <div class="card">
+            <img src="images/a7.webp" alt="Custom Design Tee" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Fully Custom</p><h3 class="card-name">Your Design, Your Tee</h3></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-panel" id="panel-mugs">
+        <div class="grid-mug">
+          <div class="card">
+            <img src="images/m1.jpg" alt="Custom Photo Mug White" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Custom Photo Mug</p><h3 class="card-name">Classic White Ceramic</h3></div>
+          </div>
+          <div class="card">
+            <img src="images/m2.jpg" alt="Magic Heat Reveal Mug" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Magic Reveal</p><h3 class="card-name">Heat-Sensitive Photo Mug</h3></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="about" class="about-band">
+    <div class="about-visual">
+      <img class="about-visual-img" src="images/b3.jpg" alt="Nuzzi Studio" />
+      <div class="about-visual-label" aria-hidden="true">Nuzzi</div>
+    </div>
+    <div class="about-copy">
+      <p class="eyebrow"><span class="rule-h"></span>Our Story</p>
+      <h2>Crafted with <em>Purpose,</em><br>Delivered with Pride.</h2>
+      <div class="about-rule"></div>
+      <p>
+        Nuzzi Official was founded on a simple belief — every meaningful
+        moment deserves to live beyond a phone screen. We transform your
+        most cherished photos into premium printed pieces that last a lifetime.
+      </p>
+      <p>
+        From the first consultation to final delivery, every order is
+        handled with care. We work directly with you to ensure each
+        product exceeds expectations — because great gifts shouldn't feel generic.
+      </p>
+      <a href="#contact" class="btn-primary" style="width:fit-content">Start Your Order</a>
+    </div>
+  </section>
+
+  <section id="process" class="process-section">
+    <div class="wrap">
+      <div class="section-intro reveal">
+        <div class="section-intro-left">
+          <div class="section-intro-eyebrow">
+            <span class="rule-h"></span>
+            <span class="eyebrow">How It Works</span>
+          </div>
+          <h2 class="section-intro-title">The <em>Process</em></h2>
+        </div>
+        <div class="section-intro-count" aria-hidden="true">02</div>
+      </div>
+      <div class="process-grid">
+        <div class="process-card reveal">
+          <div class="process-num">01</div>
+          <p class="process-name">Reach Out</p>
+          <p class="process-desc">Contact us via email or social media. Share your vision, product type, and any photos you'd like to use.</p>
+          <div class="process-accent"></div>
+        </div>
+        <div class="process-card reveal">
+          <div class="process-num">02</div>
+          <p class="process-name">Design</p>
+          <p class="process-desc">Our team creates a custom layout tailored to your style. You review and approve the design before we proceed.</p>
+          <div class="process-accent"></div>
+        </div>
+        <div class="process-card reveal">
+          <div class="process-num">03</div>
+          <p class="process-name">Production</p>
+          <p class="process-desc">Using premium materials and precision printing, we craft your piece. Every item goes through quality control.</p>
+          <div class="process-accent"></div>
+        </div>
+        <div class="process-card reveal">
+          <div class="process-num">04</div>
+          <p class="process-name">Delivery</p>
+          <p class="process-desc">Your creation arrives carefully packaged and ready to gift. Standard turnaround is 48 hours after approval.</p>
+          <div class="process-accent"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonial-section">
+    <div class="wrap-sm">
+      <p class="testimonial-quote">
+        The quality completely blew me away. I ordered a custom blanket
+        for my mom's birthday and she cried when she opened it. This is
+        what a real gift feels like.
+      </p>
+      <p class="testimonial-attr">— Sarah K., Verified Customer</p>
+    </div>
+  </section>
+
+  <section id="contact" class="cta-section">
+    <div class="wrap-sm" style="text-align:center">
+      <p class="eyebrow" style="justify-content:center;display:flex;align-items:center;gap:0;margin-bottom:20px">
+        <span class="rule-h"></span>Let's Create Together
+      </p>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(36px,4.5vw,60px);font-weight:400;line-height:1.15;margin-bottom:20px">
+        Ready to Make<br><em style="font-style:italic;color:var(--gold)">Something Unforgettable?</em>
+      </h2>
+      <p style="font-size:15px;color:var(--mist);max-width:500px;margin:0 auto 44px;line-height:1.9">
+        Every order is a unique creation. Send us your photos,
+        your idea, or just a feeling — we'll take it from there.
+      </p>
+      <a href="mailto:nuzziofficial@gmail.com" class="cta-email">nuzziofficial@gmail.com</a>
+      <div class="cta-divider"></div>
+      <p class="cta-tagline">Custom prints · Blankets · Bedding · Apparel · Drinkware</p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-logo">Nuzzi Official</span>
+      <span class="footer-copy">&copy; 2026 Nuzzi Official. All rights reserved.</span>
+      <nav class="footer-nav">
+        <a href="#collection">Collection</a>
+        <a href="#about">About</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    function showTab(id, btn) {
+      document.querySelectorAll('.cat-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('panel-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          e.target.style.transitionDelay = (i * 0.08) + 's';
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal, .card, .process-card, .stat-cell').forEach(el => {
+      el.classList.add('reveal');
+      io.observe(el);
+    });
+  </script>
 
 </body>
 </html>
