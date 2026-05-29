@@ -395,35 +395,37 @@
     .cat-panel { display: none; }
     .cat-panel.active { display: block; }
 
+    /* Blanket Grid */
     .grid-blanket {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: 400px 380px;
+      grid-auto-rows: 380px;
       gap: 3px;
     }
-    .grid-blanket .card:nth-child(1) { grid-column: 1 / 3; }
-    .grid-blanket .card:nth-child(5) { grid-column: 2 / 4; }
+    .grid-blanket .card:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+    .grid-blanket .card:nth-child(4) { grid-column: span 2; }
 
+    /* Bedding Grid */
     .grid-bedding {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-auto-rows: 300px;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 320px;
       gap: 3px;
     }
-    .grid-bedding .card:nth-child(1) { grid-column: span 2; grid-row: span 2; }
 
+    /* Apparel Grid */
     .grid-apparel {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-auto-rows: 380px;
       gap: 3px;
     }
-    .grid-apparel .card:nth-child(1) { grid-row: span 2; }
 
-    .grid-mug {
+    /* Drinkware Grid */
+    .grid-drinkware {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-auto-rows: 520px;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 450px;
       gap: 3px;
     }
 
@@ -649,9 +651,9 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 1100px) {
-      .grid-blanket  { grid-template-rows: 360px 340px; }
-      .grid-bedding  { grid-template-columns: repeat(3, 1fr); }
-      .grid-bedding .card:nth-child(1) { grid-column: span 1; grid-row: span 1; }
+      .grid-blanket  { grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; }
+      .grid-blanket .card { min-height: 280px; grid-column: span 1 !important; grid-row: span 1 !important; }
+      .grid-bedding, .grid-apparel, .grid-drinkware  { grid-template-columns: repeat(2, 1fr); }
       .process-grid  { grid-template-columns: repeat(2, 1fr); }
       .process-card  { border-bottom: 1px solid var(--rule); }
     }
@@ -666,13 +668,6 @@
       .about-copy    { padding: 52px 24px; }
       .section-intro { flex-direction: column; align-items: flex-start; gap: 8px; }
       .section-intro-count { display: none; }
-      .grid-blanket  { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-      .grid-blanket .card { min-height: 260px; }
-      .grid-blanket .card:nth-child(1), .grid-blanket .card:nth-child(5) { grid-column: 1 / 3; }
-      .grid-bedding  { grid-template-columns: 1fr 1fr; grid-auto-rows: 240px; }
-      .grid-apparel  { grid-template-columns: 1fr 1fr; }
-      .grid-apparel .card:nth-child(1) { grid-row: span 1; }
-      .grid-mug      { grid-auto-rows: 360px; }
       .stats-inner   { grid-template-columns: repeat(2, 1fr); }
       .stat-cell:nth-child(2) { border-right: none; }
       .footer-nav    { display: none; }
@@ -680,9 +675,8 @@
     @media (max-width: 560px) {
       .nav-links { display: none; }
       .hero-h1   { font-size: 36px; }
-      .grid-blanket, .grid-bedding, .grid-apparel, .grid-mug { grid-template-columns: 1fr; }
-      .grid-blanket .card, .grid-bedding .card, .grid-apparel .card, .grid-mug .card { min-height: 280px; grid-column: 1 !important; grid-row: span 1 !important; }
-      .stats-inner  { grid-template-columns: repeat(2, 1fr); }
+      .grid-blanket, .grid-bedding, .grid-apparel, .grid-drinkware { grid-template-columns: 1fr; grid-auto-rows: auto; }
+      .grid-blanket .card, .grid-bedding .card, .grid-apparel .card, .grid-drinkware .card { min-height: 280px; grid-column: 1 !important; grid-row: span 1 !important; }
       .process-grid { grid-template-columns: 1fr; }
       .tabs-row { overflow-x: auto; padding-bottom: 2px; }
       .tab-btn  { flex-shrink: 0; }
@@ -744,16 +738,6 @@
       <span class="ticker-item">Photo Drinkware <span>✦</span></span>
       <span class="ticker-item">Made to Order <span>✦</span></span>
       <span class="ticker-item">Ships in 48 Hours <span>✦</span></span>
-      <span class="ticker-item">100% Custom <span>✦</span></span>
-      <span class="ticker-item">American Quality <span>✦</span></span>
-      <span class="ticker-item">Custom Blankets <span>✦</span></span>
-      <span class="ticker-item">Luxury Bedding <span>✦</span></span>
-      <span class="ticker-item">Premium Apparel <span>✦</span></span>
-      <span class="ticker-item">Photo Drinkware <span>✦</span></span>
-      <span class="ticker-item">Made to Order <span>✦</span></span>
-      <span class="ticker-item">Ships in 48 Hours <span>✦</span></span>
-      <span class="ticker-item">100% Custom <span>✦</span></span>
-      <span class="ticker-item">American Quality <span>✦</span></span>
     </div>
   </div>
 
@@ -793,37 +777,29 @@
       </div>
 
       <div class="tabs-row">
-        <button class="tab-btn active" onclick="showTab('blankets', this)">Blankets</button>
-        <button class="tab-btn"        onclick="showTab('bedding',  this)">Bedding</button>
-        <button class="tab-btn"        onclick="showTab('apparel',  this)">Apparel</button>
-        <button class="tab-btn"        onclick="showTab('mugs',    this)">Drinkware</button>
+        <button class="tab-btn active" onclick="showTab('blanket', this)">Blanket</button>
+        <button class="tab-btn"        onclick="showTab('bedding', this)">Bedding</button>
+        <button class="tab-btn"        onclick="showTab('apparel', this)">T-Shirt & Apparel</button>
+        <button class="tab-btn"        onclick="showTab('drinkware', this)">Mug & Drinkware</button>
       </div>
 
-      <div class="cat-panel active" id="panel-blankets">
+      <div class="cat-panel active" id="panel-blanket">
         <div class="grid-blanket">
           <div class="card">
-            <img src="photo_2026-05-30_04-26-55 (4).jpg" alt="Photo Text Blanket" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Custom Photo</p><h3 class="card-name">Letter Print Blanket</h3></div>
+            <img src="photo_2026-05-30_04-26-57.jpg" alt="Happy Dogs Collage Blanket" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Fleece Print</p><h3 class="card-name">Happy Dogs Collage Blanket</h3></div>
           </div>
           <div class="card">
-            <img src="photo_2026-05-30_04-26-55 (3).jpg" alt="Family Collage Blanket" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Multi-Photo Collage</p><h3 class="card-name">Family Memory Blanket</h3></div>
+            <img src="photo_2026-05-30_04-26-55.jpg" alt="Vivid Puppies Blanket" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Plush Comfort</p><h3 class="card-name">3D Vivid Puppies Blanket</h3></div>
           </div>
           <div class="card">
-            <img src="photo_2026-05-30_04-26-55 (2).jpg" alt="Couple Love Blanket" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Couple's Edition</p><h3 class="card-name">Photo Grid Throw</h3></div>
+            <img src="photo_2026-05-30_04-26-57 (6).jpg" alt="Cute Portrait Custom Print" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Art Illustration</p><h3 class="card-name">Cute Portrait Custom Blanket</h3></div>
           </div>
           <div class="card">
-            <img src="photo_2026-05-30_04-26-55.jpg" alt="Letter Blanket" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Sentimental Gift</p><h3 class="card-name">Keepsake Message Blanket</h3></div>
-          </div>
-          <div class="card">
-            <img src="photo_2026-05-30_04-26-54 (5).jpg" alt="Full Photo Blanket" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Full-Print Fleece</p><h3 class="card-name">Portrait Blanket</h3></div>
-          </div>
-          <div class="card">
-            <img src="photo_2026-05-30_04-26-54 (4).jpg" alt="Dual Layout Blanket" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Dual Photo</p><h3 class="card-name">Split Layout Throw</h3></div>
+            <img src="photo_2026-05-30_04-26-57 (5).jpg" alt="Magic Family Display Blanket" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Memory Series</p><h3 class="card-name">Magic Family Display Blanket</h3></div>
           </div>
         </div>
       </div>
@@ -831,36 +807,40 @@
       <div class="cat-panel" id="panel-bedding">
         <div class="grid-bedding">
           <div class="card">
-            <img src="photo_2026-05-30_04-26-54 (5).jpg" alt="Dog Collage Bedsheet" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Full-Print Bedsheet</p><h3 class="card-name">Dogs in Bloom</h3></div>
+            <img src="photo_2026-05-30_04-26-56 (4).jpg" alt="Dog Breeds Bedsheet" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Premium Bedding</p><h3 class="card-name">Dog Breeds Premium Bedsheet</h3></div>
           </div>
           <div class="card">
-            <img src="photo_2026-05-30_04-26-54 (4).jpg" alt="Multi-Cat Bedsheet" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Cat Collection</p><h3 class="card-name">Floral Cats Bedsheet</h3></div>
+            <img src="photo_2026-05-30_04-26-56 (3).jpg" alt="Cute Cats Blue Flowers Bedding" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Floral Series</p><h3 class="card-name">3D Cats & Blue Flowers Bedding</h3></div>
           </div>
           <div class="card">
-            <img src="photo_2026-05-30_04-26-54 (3).jpg" alt="Kitten Bedsheet" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Photo Print</p><h3 class="card-name">Tabby Duo Bedsheet</h3></div>
+            <img src="photo_2026-05-30_04-26-56 (2).jpg" alt="Tabby Kittens Grey Bedsheet" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Luxury Cotton</p><h3 class="card-name">Tabby Kittens Grey Bedsheet Set</h3></div>
           </div>
           <div class="card">
-            <img src="photo_2026-05-30_04-26-56.jpg" alt="Lavender Cat Bedsheet" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Art Print</p><h3 class="card-name">Lavender & Cats</h3></div>
+            <img src="photo_2026-05-30_04-26-56.jpg" alt="Persian Cats Lavender Bedding" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Art Print</p><h3 class="card-name">Persian Cats & Lavender Bedding</h3></div>
           </div>
           <div class="card">
-            <img src="photo_2026-05-30_04-26-55 (4).jpg" alt="Custom Dog Name Bedsheet" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Custom Name</p><h3 class="card-name">Personalized Pet Bedsheet</h3></div>
+            <img src="photo_2026-05-30_04-26-54 (5).jpg" alt="Ultimate Dog Collage Bedding" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Pet Lover Exclusive</p><h3 class="card-name">Ultimate Dog Collage Bedding</h3></div>
           </div>
           <div class="card">
-            <img src="photo_2026-05-30_04-26-55 (3).jpg" alt="Custom Cat Name Bedsheet" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Custom Name</p><h3 class="card-name">Cat Name Bedsheet</h3></div>
+            <img src="photo_2026-05-30_04-26-54 (4).jpg" alt="Dreamy Cats Floral Bedsheet" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Botanical Theme</p><h3 class="card-name">Dreamy Cats Floral Bedsheet</h3></div>
           </div>
           <div class="card">
-            <img src="photo_2026-05-30_04-26-55.jpg" alt="Funny Dogs Blanket" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Fun Collection</p><h3 class="card-name">Happy Dogs Throw</h3></div>
+            <img src="photo_2026-05-30_04-26-54 (3).jpg" alt="Classic Grey Tabby Bedsheet" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Minimalist Print</p><h3 class="card-name">Classic Grey Tabby Bedsheet</h3></div>
           </div>
           <div class="card">
-            <img src="photo_2026-05-30_04-26-53.jpg" alt="Custom Pet Bedding Set" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Luxury Bedding Set</p><h3 class="card-name">Custom Pet Bedding</h3></div>
+            <img src="photo_2026-05-30_04-26-54.jpg" alt="Luxury Lavender Cat Bedding" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Special Edition</p><h3 class="card-name">Luxury Lavender Cat Bedding</h3></div>
+          </div>
+          <div class="card">
+            <img src="photo_2026-05-30_04-26-53.jpg" alt="Fluffy White Cat 3D Bedding" loading="lazy" />
+            <div class="card-info"><p class="card-tag">High-Definition 3D</p><h3 class="card-name">Fluffy White Cat 3D Bedding</h3></div>
           </div>
         </div>
       </div>
@@ -868,49 +848,45 @@
       <div class="cat-panel" id="panel-apparel">
         <div class="grid-apparel">
           <div class="card">
-            <img src="photo_2026-05-30_04-26-55.jpg" alt="Boyfriend Version Tee" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Custom Photo Tee</p><h3 class="card-name">Boyfriend's Version</h3></div>
+            <img src="photo_2026-05-30_04-26-57 (4).jpg" alt="Dog Name & Paw Pattern Wear" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Custom Apparel</p><h3 class="card-name">Dog Name & Paw Print Custom Wear</h3></div>
           </div>
           <div class="card">
-            <img src="photo_2026-05-30_04-26-55 (2).jpg" alt="Couple Vintage Tee" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Couple's Edition</p><h3 class="card-name">Vintage Couple Tee</h3></div>
+            <img src="photo_2026-05-30_04-26-57 (3).jpg" alt="Cat Silhouette Typography Wear" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Minimalist Apparel</p><h3 class="card-name">Cat Silhouette Typography Wear</h3></div>
           </div>
           <div class="card">
-            <img src="photo_2026-05-30_04-26-55 (4).jpg" alt="Love Thy Neighbor Tee" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Graphic Tee</p><h3 class="card-name">Love Thy Neighbor</h3></div>
+            <img src="photo_2026-05-30_04-26-57 (2).jpg" alt="Rustic Leather Style Pet Shirt" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Vintage Finish</p><h3 class="card-name">Rustic Leather Style Pet Apparel</h3></div>
           </div>
           <div class="card">
-            <img src="photo_2026-05-30_04-26-55 (3).jpg" alt="Retro Slogan Tee" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Retro Print</p><h3 class="card-name">Retro Harmony Tee</h3></div>
+            <img src="photo_2026-05-30_04-26-55 (4).jpg" alt="Custom Typography Pet Tee" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Graphic Shirt</p><h3 class="card-name">Custom Typography Pet Tee</h3></div>
           </div>
           <div class="card">
-            <img src="photo_2026-05-30_04-26-54 (5).jpg" alt="Homeowner Era Tee" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Milestone</p><h3 class="card-name">Homeowner Era Tee</h3></div>
+            <img src="photo_2026-05-30_04-26-55 (3).jpg" alt="Cat Slogan Typography Wear" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Premium Apparel</p><h3 class="card-name">Cat Slogan Typography Wear</h3></div>
           </div>
           <div class="card">
-            <img src="photo_2026-05-30_04-26-54 (4).jpg" alt="New Home Owner Tee" loading="lazy" />
-            <div class="card-info"><p class="card-tag">New Home</p><h3 class="card-name">New Home Owner Tee</h3></div>
-          </div>
-          <div class="card">
-            <img src="photo_2026-05-30_04-26-54 (3).jpg" alt="Custom Design Tee" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Fully Custom</p><h3 class="card-name">Your Design, Your Tee</h3></div>
+            <img src="photo_2026-05-30_04-26-55 (2).jpg" alt="Vintage Multi-Pet Custom Wear" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Retro Collection</p><h3 class="card-name">Vintage Multi-Pet Custom Wear</h3></div>
           </div>
         </div>
       </div>
 
-      <div class="cat-panel" id="panel-mugs">
-        <div class="grid-mug">
+      <div class="cat-panel" id="panel-drinkware">
+        <div class="grid-drinkware">
           <div class="card">
-            <img src="photo_2026-05-30_04-26-55 (6).jpg" alt="Custom Photo Mug White" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Custom Photo Mug</p><h3 class="card-name">Classic White Ceramic</h3></div>
+            <img src="photo_2026-05-30_04-26-55 (6).jpg" alt="Personalized Kids Photo Mug" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Custom Ceramic</p><h3 class="card-name">Personalized Kids Photo Mug</h3></div>
           </div>
           <div class="card">
-            <img src="photo_2026-05-30_04-26-55 (5).jpg" alt="Magic Heat Reveal Mug" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Magic Reveal</p><h3 class="card-name">Heat-Sensitive Photo Mug</h3></div>
+            <img src="photo_2026-05-30_04-26-55 (5).jpg" alt="Heat-Sensitive Magic Mug" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Magic Reveal</p><h3 class="card-name">Heat-Sensitive Magic Mug</h3></div>
           </div>
           <div class="card">
-            <img src="photo_2026-05-30_04-27-31.jpg" alt="Heart Shape Family Mug" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Heart Shape</p><h3 class="card-name">Heart Shape Family Photo Mug</h3></div>
+            <img src="photo_2026-05-30_04-27-31.jpg" alt="Heart Shape Family Photo Mug" loading="lazy" />
+            <div class="card-info"><p class="card-tag">Artisan Mug</p><h3 class="card-name">Heart Shape Family Photo Mug</h3></div>
           </div>
         </div>
       </div>
@@ -928,14 +904,7 @@
       <h2>Crafted with <em>Purpose,</em><br>Delivered with Pride.</h2>
       <div class="about-rule"></div>
       <p>
-        Nuzzi Official was founded on a simple belief — every meaningful
-        moment deserves to live beyond a phone screen. We transform your
-        most cherished photos into premium printed pieces that last a lifetime.
-      </p>
-      <p>
-        From the first consultation to final delivery, every order is
-        handled with care. We work directly with you to ensure each
-        product exceeds expectations — because great gifts shouldn't feel generic.
+        Nuzzi Official transforms your most cherished photos into premium printed pieces that last a lifetime.
       </p>
       <a href="#contact" class="btn-primary" style="width:fit-content">Start Your Order</a>
     </div>
@@ -954,60 +923,17 @@
         <div class="section-intro-count" aria-hidden="true">02</div>
       </div>
       <div class="process-grid">
-        <div class="process-card reveal">
-          <div class="process-num">01</div>
-          <p class="process-name">Reach Out</p>
-          <p class="process-desc">Contact us via email or social media. Share your vision, product type, and any photos you'd like to use.</p>
-          <div class="process-accent"></div>
-        </div>
-        <div class="process-card reveal">
-          <div class="process-num">02</div>
-          <p class="process-name">Design</p>
-          <p class="process-desc">Our team creates a custom layout tailored to your style. You review and approve the design before we proceed.</p>
-          <div class="process-accent"></div>
-        </div>
-        <div class="process-card reveal">
-          <div class="process-num">03</div>
-          <p class="process-name">Production</p>
-          <p class="process-desc">Using premium materials and precision printing, we craft your piece. Every item goes through quality control.</p>
-          <div class="process-accent"></div>
-        </div>
-        <div class="process-card reveal">
-          <div class="process-num">04</div>
-          <p class="process-name">Delivery</p>
-          <p class="process-desc">Your creation arrives carefully packaged and ready to gift. Standard turnaround is 48 hours after approval.</p>
-          <div class="process-accent"></div>
-        </div>
+        <div class="process-card reveal"><div class="process-num">01</div><p class="process-name">Reach Out</p><p class="process-desc">Share your Vision.</p><div class="process-accent"></div></div>
+        <div class="process-card reveal"><div class="process-num">02</div><p class="process-name">Design</p><p class="process-desc">Custom Layout.</p><div class="process-accent"></div></div>
+        <div class="process-card reveal"><div class="process-num">03</div><p class="process-name">Production</p><p class="process-desc">Precision Crafting.</p><div class="process-accent"></div></div>
+        <div class="process-card reveal"><div class="process-num">04</div><p class="process-name">Delivery</p><p class="process-desc">Carefully Packaged.</p><div class="process-accent"></div></div>
       </div>
     </div>
   </section>
 
-  <section class="testimonial-section">
-    <div class="wrap-sm">
-      <p class="testimonial-quote">
-        The quality completely blew me away. I ordered a custom blanket
-        for my mom's birthday and she cried when she opened it. This is
-        what a real gift feels like.
-      </p>
-      <p class="testimonial-attr">— Sarah K., Verified Customer</p>
-    </div>
-  </section>
-
   <section id="contact" class="cta-section">
-    <div class="wrap-sm" style="text-align:center">
-      <p class="eyebrow" style="justify-content:center;display:flex;align-items:center;gap:0;margin-bottom:20px">
-        <span class="rule-h"></span>Let's Create Together
-      </p>
-      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(36px,4.5vw,60px);font-weight:400;line-height:1.15;margin-bottom:20px">
-        Ready to Make<br><em style="font-style:italic;color:var(--gold)">Something Unforgettable?</em>
-      </h2>
-      <p style="font-size:15px;color:var(--mist);max-width:500px;margin:0 auto 44px;line-height:1.9">
-        Every order is a unique creation. Send us your photos,
-        your idea, or just a feeling — we'll take it from there.
-      </p>
+    <div class="wrap-sm">
       <a href="mailto:nuzziofficial@gmail.com" class="cta-email">nuzziofficial@gmail.com</a>
-      <div class="cta-divider"></div>
-      <p class="cta-tagline">Custom prints · Blankets · Bedding · Apparel · Drinkware</p>
     </div>
   </section>
 
@@ -1015,12 +941,6 @@
     <div class="footer-inner">
       <span class="footer-logo">Nuzzi Official</span>
       <span class="footer-copy">&copy; 2026 Nuzzi Official. All rights reserved.</span>
-      <nav class="footer-nav">
-        <a href="#collection">Collection</a>
-        <a href="#about">About</a>
-        <a href="#process">Process</a>
-        <a href="#contact">Contact</a>
-      </nav>
     </div>
   </footer>
 
@@ -1033,19 +953,15 @@
     }
 
     const io = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
+      entries.forEach((e) => {
         if (e.isIntersecting) {
-          e.target.style.transitionDelay = (i * 0.08) + 's';
           e.target.classList.add('visible');
           io.unobserve(e.target);
         }
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.reveal, .card, .process-card, .stat-cell').forEach(el => {
-      el.classList.add('reveal');
-      io.observe(el);
-    });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   </script>
 
 </body>
