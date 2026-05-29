@@ -3,71 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuzzi Official | Premium Custom Print Portfolio</title>
+    <title>Nuzzi Official | Luxury Custom Print Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        :root { --primary-color: #111111; --accent-color: #ff4757; --bg-light: #f8f9fa; --text-dark: #2d3436; --text-muted: #636e72; }
-        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
-        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 20px 0; }
-        header { background: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.02); position: sticky; top: 0; z-index: 100; }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
-        .logo { font-size: 22px; font-weight: 800; color: var(--primary-color); letter-spacing: 1.5px; }
-        .nav-links a { text-decoration: none; color: var(--text-muted); margin-left: 25px; font-weight: 500; }
-        .hero { background: linear-gradient(135deg, #ffffff 0%, #eef2f3 100%); padding: 100px 0; text-align: center; }
-        .hero h1 { font-size: 48px; font-weight: 800; margin-bottom: 20px; }
-        .hero p { font-size: 19px; color: var(--text-muted); max-width: 750px; margin: 0 auto 35px auto; }
-        .btn-cta { display: inline-block; background: var(--primary-color); color: #ffffff; padding: 14px 35px; text-decoration: none; border-radius: 30px; font-weight: 600; }
-        .section-title { text-align: center; margin: 80px 0 50px 0; font-size: 32px; font-weight: 700; position: relative; }
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; margin-bottom: 80px; }
-        .portfolio-item { background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .portfolio-item img { width: 100%; height: 320px; object-fit: cover; display: block; }
-        .portfolio-info { padding: 20px; }
-        .portfolio-info span { font-size: 12px; text-transform: uppercase; color: var(--accent-color); font-weight: 700; }
-        .portfolio-info h3 { font-size: 18px; color: var(--primary-color); margin-top: 5px; }
-        .contact-section { background: var(--primary-color); color: #ffffff; padding: 90px 0; text-align: center; }
-        .email-link { font-size: 26px; color: #ffffff; text-decoration: none; font-weight: 700; border-bottom: 2px dashed var(--accent-color); }
-        footer { background: #0a0a0a; color: #555555; text-align: center; padding: 25px 0; font-size: 14px; }
-        @media (max-width: 768px) { .hero h1 { font-size: 36px; } .nav-container { flex-direction: column; gap: 15px; } .nav-links a { margin: 0 10px; } }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root { 
+            --bg-dark: #0a0a0a; 
+            --card-bg: #141414;
+            --accent-gold: #c5a880; 
+            --text-light: #ffffff; 
+            --text-muted: #a0a0a0; 
+            --border-color: #262626;
+        }
+
+        body { 
+            background-color: var(--bg-dark); 
+            color: var(--text-light); 
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7; 
+            overflow-x: hidden;
+        }
+
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+
+        /* Premium Navigation */
+        header { 
+            background: rgba(10, 10, 10, 0.9); 
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color); 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 25px 0; }
+        .logo { 
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px; 
+            font-weight: 600; 
+            color: var(--text-light); 
+            letter-spacing: 4px; 
+        }
+        .logo span { color: var(--accent-gold); }
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--text-muted); 
+            margin-left: 35px; 
+            font-weight: 400; 
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--accent-gold); }
+
+        /* Hero Section - Editorial Style */
+        .hero { 
+            padding: 140px 0 100px 0; 
+            text-align: center; 
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+        .hero h1 { 
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 64px; 
+            font-weight: 400; 
+            letter-spacing: 2px;
+            margin-bottom: 25px; 
+            line-height: 1.2;
+        }
+        .hero h1 span { font-style: italic; color: var(--accent-gold); }
+        .hero p { 
+            font-size: 16px; 
+            font-weight: 300;
+            color: var(--text-muted); 
+            max-width: 650px; 
+            margin: 0 auto 40px auto; 
+            letter-spacing: 1px;
+        }
+        .btn-cta { 
+            display: inline-block; 
+            background: transparent; 
+            color: var(--text-light); 
+            padding: 14px 40px; 
+            text-decoration: none; 
+            border: 1px solid var(--accent-gold);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+        }
+        .btn-cta:hover { 
+            background: var(--accent-gold); 
+            color: var(--bg-dark); 
+            box-shadow: 0 10px 20px rgba(197, 168, 128, 0.15);
+        }
+
+        /* Portfolio Section */
+        .section-title { 
+            text-align: center; 
+            margin: 100px 0 60px 0; 
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 40px; 
+            font-weight: 400; 
+            letter-spacing: 3px;
+        }
+        .section-title span { color: var(--accent-gold); }
+        
+        .portfolio-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); 
+            gap: 40px; 
+            margin-bottom: 120px; 
+        }
+        .portfolio-item { 
+            background: var(--card-bg); 
+            border: 1px solid var(--border-color);
+            overflow: hidden; 
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .img-container {
+            width: 100%;
+            height: 360px;
+            overflow: hidden;
+            background: #1a1a1a;
+        }
+        .portfolio-item img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block; 
+            transition: transform 0.6s ease;
+        }
+        .portfolio-item:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        .portfolio-item:hover img { 
+            transform: scale(1.05); 
+        }
+        .portfolio-info { padding: 25px; background: var(--card-bg); }
+        .portfolio-info span { 
+            font-size: 11px; 
+            text-transform: uppercase; 
+            color: var(--accent-gold); 
+            font-weight: 500; 
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .portfolio-info h3 { 
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px; 
+            color: var(--text-light); 
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* Luxury Contact Section */
+        .contact-section { 
+            background: #0e0e0e; 
+            border-top: 1px solid var(--border-color);
+            padding: 120px 0; 
+            text-align: center; 
+        }
+        .contact-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        .contact-section p {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 40px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        .email-link { 
+            font-size: 24px; 
+            color: var(--accent-gold); 
+            text-decoration: none; 
+            font-weight: 300; 
+            letter-spacing: 1px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--accent-gold); 
+            transition: opacity 0.3s ease;
+        }
+        .email-link:hover { opacity: 0.8; }
+
+        /* Footer */
+        footer { 
+            background: #050505; 
+            border-top: 1px solid var(--border-color);
+            color: #555555; 
+            text-align: center; 
+            padding: 35px 0; 
+            font-size: 12px; 
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Responsive Optimization */
+        @media (max-width: 768px) { 
+            .hero h1 { font-size: 42px; } 
+            .nav-container { flex-direction: column; gap: 20px; text-align: center; } 
+            .nav-links a { margin: 0 12px; font-size: 11px; } 
+            .portfolio-grid { grid-template-columns: 1fr; gap: 30px; }
+        }
     </style>
 </head>
 <body>
+
     <header>
         <div class="container nav-container">
-            <div class="logo">NUZZI OFFICIAL</div>
-            <div class="nav-links"><a href="#home">Home</a><a href="#portfolio">Work</a><a href="#contact">Contact</a></div>
+            <div class="logo">NUZZI<span>.</span></div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#portfolio">Our Work</a>
+                <a href="#contact">Inquire</a>
+            </div>
         </div>
     </header>
+
     <section id="home" class="hero">
         <div class="container">
-            <h1>Bespoke Custom Print Design</h1>
-            <p>Transforming your favorite images into high-quality, customized everyday essentials. Specializing in tailored layouts for premium mugs, cozy blankets, bedsheets, and custom apparel.</p>
-            <a href="#contact" class="btn-cta">Let's Work Together</a>
+            <h1>Bespoke <span>Print Designs</span></h1>
+            <p>Curating high-end bespoke layouts for everyday essentials. Specializing in premium custom blankets, luxury bedding concepts, and elite corporate drinkware solutions.</p>
+            <a href="#contact" class="btn-cta">Commission Work</a>
         </div>
     </section>
+
     <section id="portfolio" class="container">
-        <h2 class="section-title">Featured Creations</h2>
+        <h2 class="section-title">Selected <span>Creations</span></h2>
         <div class="portfolio-grid">
-            <div class="portfolio-item"><img src="71ls3g7SjXL.jpg" alt="Blanket"><div class="portfolio-info"><span>Blanket</span><h3>Premium Custom Fleece Blanket</h3></div></div>
-            <div class="portfolio-item"><img src="71JQVg4keoL.jpg" alt="Blanket"><div class="portfolio-info"><span>Blanket</span><h3>Personalized Cozy Photo Blanket</h3></div></div>
-            <div class="portfolio-item"><img src="71LzHaJ5YlS.jpg" alt="Blanket"><div class="portfolio-info"><span>Blanket</span><h3>Custom Print Family Keepsake</h3></div></div>
-            <div class="portfolio-item"><img src="71kruM4F0rL.jpg" alt="Blanket"><div class="portfolio-info"><span>Blanket</span><h3>Luxury Anniversary Gift Blanket</h3></div></div>
-            <div class="portfolio-item"><img src="71nRtOlFN6L.jpg" alt="Blanket"><div class="portfolio-info"><span>Blanket</span><h3>Vibrant Custom Pattern Throw</h3></div></div>
-            <div class="portfolio-item"><img src="81g0mzTLXLL.jpg" alt="Bedding"><div class="portfolio-info"><span>Bedding</span><h3>Premium Custom Print Bedsheet</h3></div></div>
-            <div class="portfolio-item"><img src="images (2).jpeg" alt="Drinkware"><div class="portfolio-info"><span>Drinkware</span><h3>Custom Ceramic Photo Mug</h3></div></div>
-            <div class="portfolio-item"><img src="images (3).jpeg" alt="Drinkware"><div class="portfolio-info"><span>Drinkware</span><h3>Personalized Design Coffee Mug</h3></div></div>
-            <div class="portfolio-item"><img src="images (4).jpeg" alt="Apparel"><div class="portfolio-info"><span>Apparel</span><h3>Custom Graphic Layout Apparel</h3></div></div>
-            <div class="portfolio-item"><img src="images (5).jpeg" alt="Apparel"><div class="portfolio-info"><span>Apparel</span><h3>Personalized Typography Streetwear</h3></div></div>
-            <div class="portfolio-item"><img src="images (6).jpeg" alt="Merchandise"><div class="portfolio-info"><span>Merchandise</span><h3>Bespoke Custom Print Essential</h3></div></div>
-            <div class="portfolio-item"><img src="images (7).jpeg" alt="Merchandise"><div class="portfolio-info"><span>Merchandise</span><h3>Exclusive Tailored Placement Print</h3></div></div>
+            <div class="portfolio-item"><div class="img-container"><img src="71ls3g7SjXL.jpg" alt="Blanket"></div><div class="portfolio-info"><span>Blanket</span><h3>Premium Custom Fleece Blanket</h3></div></div>
+            <div class="portfolio-item"><div class="img-container"><img src="71JQVg4keoL.jpg" alt="Blanket"></div><div class="portfolio-info"><span>Blanket</span><h3>Personalized Cozy Photo Blanket</h3></div></div>
+            <div class="portfolio-item"><div class="img-container"><img src="71LzHaJ5YlS.jpg" alt="Blanket"></div><div class="portfolio-info"><span>Blanket</span><h3>Custom Print Family Keepsake</h3></div></div>
+            <div class="portfolio-item"><div class="img-container"><img src="71kruM4F0rL.jpg" alt="Blanket"></div><div class="portfolio-info"><span>Blanket</span><h3>Luxury Anniversary Gift Blanket</h3></div></div>
+            <div class="portfolio-item"><div class="img-container"><img src="71nRtOlFN6L.jpg" alt="Blanket"></div><div class="portfolio-info"><span>Blanket</span><h3>Vibrant Custom Pattern Throw</h3></div></div>
+            <div class="portfolio-item"><div class="img-container"><img src="81g0mzTLXLL.jpg" alt="Bedding"></div><div class="portfolio-info"><span>Bedding</span><h3>Premium Custom Print Bedsheet</h3></div></div>
+            <div class="portfolio-item"><div class="img-container"><img src="images (2).jpeg" alt="Drinkware"></div><div class="portfolio-info"><span>Drinkware</span><h3>Custom Ceramic Photo Mug</h3></div></div>
+            <div class="portfolio-item"><div class="img-container"><img src="images (3).jpeg" alt="Drinkware"></div><div class="portfolio-info"><span>Drinkware</span><h3>Personalized Design Coffee Mug</h3></div></div>
+            <div class="portfolio-item"><div class="img-container"><img src="images (4).jpeg" alt="Apparel"></div><div class="portfolio-info"><span>Apparel</span><h3>Custom Graphic Layout Apparel</h3></div></div>
+            <div class="portfolio-item"><div class="img-container"><img src="images (5).jpeg" alt="Apparel"></div><div class="portfolio-info"><span>Apparel</span><h3>Personalized Typography Streetwear</h3></div></div>
+            <div class="portfolio-item"><div class="img-container"><img src="images (6).jpeg" alt="Merchandise"></div><div class="portfolio-info"><span>Merchandise</span><h3>Bespoke Custom Print Essential</h3></div></div>
+            <div class="portfolio-item"><div class="img-container"><img src="images (7).jpeg" alt="Merchandise"></div><div class="portfolio-info"><span>Merchandise</span><h3>Exclusive Tailored Placement Print</h3></div></div>
         </div>
     </section>
+
     <section id="contact" class="contact-section">
         <div class="container">
-            <h2>Have a Design Project in Mind?</h2>
-            <p>Send over your high-resolution images. Let's create something memorable together.</p>
+            <h2>Start Your Project</h2>
+            <p>Collaborate with us to translate your visions into premium tangible art.</p>
             <a href="mailto:nuzziofficial@gmail.com" class="email-link">nuzziofficial@gmail.com</a>
         </div>
     </section>
-    <footer><p>&copy; 2026 Nuzzi Official. All Rights Reserved.</p></footer>
+
+    <footer>
+        <p>&copy; 2026 Nuzzi Official. Cultivating Exceptional Print Standards.</p>
+    </footer>
+
 </body>
 </html>
