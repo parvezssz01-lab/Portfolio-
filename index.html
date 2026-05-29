@@ -395,39 +395,17 @@
     .cat-panel { display: none; }
     .cat-panel.active { display: block; }
 
-    /* Blanket Grid Layout */
-    .grid-blanket {
+    /* Modern Product Grid */
+    .product-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-auto-rows: 380px;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 320px;
       gap: 3px;
-    }
-    .grid-blanket .card:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-    .grid-blanket .card:nth-child(4) { grid-column: span 1; }
-
-    /* Bedding Grid Layout - 9 Images (3x3 Grid) */
-    .grid-bedding {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-auto-rows: 340px;
-      gap: 3px;
+      background: var(--rule);
     }
 
-    /* T-Shirt & Apparel Grid Layout - 6 Images */
-    .grid-apparel {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-auto-rows: 380px;
-      gap: 3px;
-    }
-
-    /* Mug & Drinkware Grid Layout - 3 Images */
-    .grid-drinkware {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-auto-rows: 450px;
-      gap: 3px;
-    }
+    .product-grid .card.wide { grid-column: span 2; }
+    .product-grid .card.tall { grid-row: span 2; }
 
     .card {
       position: relative;
@@ -538,7 +516,7 @@
       margin-top: 56px;
     }
     .process-card {
-      padding: 40px 32px 44px;
+      padding: 44px 36px 48px;
       border-right: 1px solid var(--rule);
       transition: background 0.3s;
       position: relative;
@@ -561,9 +539,9 @@
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
-    .process-desc { font-size: 13px; color: var(--mist); line-height: 1.85; }
+    .process-desc { font-size: 13.5px; color: var(--mist); line-height: 1.8; }
     .process-accent {
       position: absolute;
       bottom: 0; left: 0;
@@ -602,16 +580,34 @@
       border-top: 1px solid var(--rule);
       text-align: center;
     }
-    .cta-email {
+    
+    .commission-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(20px, 2.5vw, 30px);
+      font-size: clamp(38px, 5vw, 68px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      color: var(--ink);
+      margin: 14px 0 24px;
+    }
+    .commission-title em {
+      font-style: italic;
+      color: var(--gold);
+      display: block;
+    }
+
+    .cta-email {
+      display: inline-block;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 2.5vw, 32px);
       font-weight: 400;
       color: var(--gold);
       border-bottom: 1px solid var(--gold-pale);
       padding-bottom: 6px;
-      transition: border-color 0.3s;
+      margin-top: 10px;
+      transition: border-color 0.3s, color 0.3s;
     }
-    .cta-email:hover { border-color: var(--gold); }
+    .cta-email:hover { border-color: var(--gold); color: var(--gold-light); }
     .cta-divider { width: 1px; height: 60px; background: var(--rule); margin: 44px auto; }
     .cta-tagline {
       font-family: 'Libre Baskerville', serif;
@@ -634,14 +630,6 @@
       color: rgba(255,255,255,0.6);
     }
     .footer-copy { font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; }
-    .footer-nav { display: flex; gap: 28px; }
-    .footer-nav a {
-      font-family: 'Jost', sans-serif; font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.3); transition: color 0.25s;
-    }
-    .footer-nav a:hover { color: var(--gold-light); }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(22px); }
@@ -651,9 +639,7 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 1100px) {
-      .grid-blanket  { grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; }
-      .grid-blanket .card { min-height: 280px; grid-column: span 1 !important; grid-row: span 1 !important; }
-      .grid-bedding, .grid-apparel, .grid-drinkware  { grid-template-columns: repeat(2, 1fr); }
+      .product-grid { grid-template-columns: repeat(3, 1fr); }
       .process-grid  { grid-template-columns: repeat(2, 1fr); }
       .process-card  { border-bottom: 1px solid var(--rule); }
     }
@@ -668,15 +654,17 @@
       .about-copy    { padding: 52px 24px; }
       .section-intro { flex-direction: column; align-items: flex-start; gap: 8px; }
       .section-intro-count { display: none; }
+      .product-grid  { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 260px; }
+      .product-grid .card.wide { grid-column: span 1; }
+      .product-grid .card.tall { grid-row: span 1; }
       .stats-inner   { grid-template-columns: repeat(2, 1fr); }
       .stat-cell:nth-child(2) { border-right: none; }
-      .footer-nav    { display: none; }
     }
     @media (max-width: 560px) {
       .nav-links { display: none; }
       .hero-h1   { font-size: 36px; }
-      .grid-blanket, .grid-bedding, .grid-apparel, .grid-drinkware { grid-template-columns: 1fr; grid-auto-rows: auto; }
-      .grid-blanket .card, .grid-bedding .card, .grid-apparel .card, .grid-drinkware .card { min-height: 280px; grid-column: 1 !important; grid-row: span 1 !important; }
+      .product-grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
+      .product-grid .card { min-height: 280px; grid-column: span 1 !important; grid-row: span 1 !important; }
       .process-grid { grid-template-columns: 1fr; }
       .tabs-row { overflow-x: auto; padding-bottom: 2px; }
       .tab-btn  { flex-shrink: 0; }
@@ -725,17 +713,17 @@
     </div>
     <div class="hero-right">
       <div class="hero-img-wrap"><img src="photo_2026-05-30_04-26-55.jpg" alt="Custom blanket" /></div>
-      <div class="hero-img-wrap"><img src="photo_2026-05-30_04-26-55 (2).jpg" alt="Custom apparel" /></div>
-      <div class="hero-img-wrap"><img src="photo_2026-05-30_04-26-55 (4).jpg" alt="Custom bedding" /></div>
+      <div class="hero-img-wrap"><img src="photo_2026-05-30_04-26-57 (4).jpg" alt="Custom apparel" /></div>
+      <div class="hero-img-wrap"><img src="photo_2026-05-30_04-26-56 (4).jpg" alt="Custom bedding" /></div>
     </div>
   </section>
 
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
-      <span class="ticker-item">Custom Blankets <span>✦</span></span>
-      <span class="ticker-item">Luxury Bedding <span>✦</span></span>
-      <span class="ticker-item">Premium Apparel <span>✦</span></span>
-      <span class="ticker-item">Photo Drinkware <span>✦</span></span>
+      <span class="ticker-item">Home & Living <span>✦</span></span>
+      <span class="ticker-item">Apparel Style <span>✦</span></span>
+      <span class="ticker-item">Premium Drinkware <span>✦</span></span>
+      <span class="ticker-item">Print-On-Demand <span>✦</span></span>
       <span class="ticker-item">Made to Order <span>✦</span></span>
       <span class="ticker-item">Ships in 48 Hours <span>✦</span></span>
     </div>
@@ -777,21 +765,21 @@
       </div>
 
       <div class="tabs-row">
-        <button class="tab-btn active" onclick="showTab('blanket', this)">Blanket</button>
-        <button class="tab-btn"        onclick="showTab('bedding', this)">Bedding</button>
-        <button class="tab-btn"        onclick="showTab('apparel', this)">T-Shirt & Apparel</button>
-        <button class="tab-btn"        onclick="showTab('drinkware', this)">Mug & Drinkware</button>
+        <button class="tab-btn active" onclick="showTab('home-living', this)">Home & Living</button>
+        <button class="tab-btn"        onclick="showTab('apparel', this)">Apparel</button>
+        <button class="tab-btn"        onclick="showTab('drinkware', this)">Drinkware</button>
+        <button class="tab-btn"        onclick="showTab('pod-products', this)">Print-on-Demand Products</button>
       </div>
 
-      <div class="cat-panel active" id="panel-blanket">
-        <div class="grid-blanket">
-          <div class="card">
+      <div class="cat-panel active" id="panel-home-living">
+        <div class="product-grid">
+          <div class="card wide">
             <img src="photo_2026-05-30_04-26-57.jpg" alt="Happy Dogs Collage Blanket" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Fleece Print</p><h3 class="card-name">Happy Dogs Collage Blanket</h3></div>
+            <div class="card-info"><p class="card-tag">Fleece Blanket</p><h3 class="card-name">Happy Dogs Collage Blanket</h3></div>
           </div>
           <div class="card">
             <img src="photo_2026-05-30_04-26-55.jpg" alt="3D Vivid Puppies Blanket" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Plush Comfort</p><h3 class="card-name">3D Vivid Puppies Blanket</h3></div>
+            <div class="card-info"><p class="card-tag">Plush Throw</p><h3 class="card-name">3D Vivid Puppies Blanket</h3></div>
           </div>
           <div class="card">
             <img src="photo_2026-05-30_04-26-57 (6).jpg" alt="Cute Portrait Custom Blanket" loading="lazy" />
@@ -801,12 +789,7 @@
             <img src="photo_2026-05-30_04-26-57 (5).jpg" alt="Magic Family Display Blanket" loading="lazy" />
             <div class="card-info"><p class="card-tag">Memory Series</p><h3 class="card-name">Magic Family Display Blanket</h3></div>
           </div>
-        </div>
-      </div>
-
-      <div class="cat-panel" id="panel-bedding">
-        <div class="grid-bedding">
-          <div class="card">
+          <div class="card tall">
             <img src="photo_2026-05-30_04-26-56 (4).jpg" alt="Dog Breeds Premium Bedsheet" loading="lazy" />
             <div class="card-info"><p class="card-tag">Premium Bedding</p><h3 class="card-name">Dog Breeds Premium Bedsheet</h3></div>
           </div>
@@ -816,7 +799,7 @@
           </div>
           <div class="card">
             <img src="photo_2026-05-30_04-26-56 (2).jpg" alt="Tabby Kittens Grey Bedsheet" loading="lazy" />
-            <div class="card-info"><p class="card-tag">Luxury Cotton</p><h3 class="card-name">Tabby Kittens Grey Bedsheet Set</h3></div>
+            <div class="card-info"><p class="card-tag">Luxury Cotton</p><h3 class="card-name">Tabby Kittens Grey Bedsheet</h3></div>
           </div>
           <div class="card">
             <img src="photo_2026-05-30_04-26-56.jpg" alt="Persian Cats & Lavender Bedding" loading="lazy" />
@@ -846,12 +829,12 @@
       </div>
 
       <div class="cat-panel" id="panel-apparel">
-        <div class="grid-apparel">
+        <div class="product-grid">
           <div class="card">
             <img src="photo_2026-05-30_04-26-57 (4).jpg" alt="Dog Name & Paw Print Custom Wear" loading="lazy" />
             <div class="card-info"><p class="card-tag">Custom Apparel</p><h3 class="card-name">Dog Name & Paw Print Custom Wear</h3></div>
           </div>
-          <div class="card">
+          <div class="card tall">
             <img src="photo_2026-05-30_04-26-57 (3).jpg" alt="Cat Silhouette Typography Wear" loading="lazy" />
             <div class="card-info"><p class="card-tag">Minimalist Apparel</p><h3 class="card-name">Cat Silhouette Typography Wear</h3></div>
           </div>
@@ -875,18 +858,39 @@
       </div>
 
       <div class="cat-panel" id="panel-drinkware">
-        <div class="grid-drinkware">
+        <div class="product-grid">
           <div class="card">
             <img src="photo_2026-05-30_04-26-55 (6).jpg" alt="Personalized Kids Photo Mug" loading="lazy" />
             <div class="card-info"><p class="card-tag">Custom Ceramic</p><h3 class="card-name">Personalized Kids Photo Mug</h3></div>
           </div>
-          <div class="card">
+          <div class="card wide">
             <img src="photo_2026-05-30_04-26-55 (5).jpg" alt="Heat-Sensitive Magic Mug" loading="lazy" />
             <div class="card-info"><p class="card-tag">Magic Reveal</p><h3 class="card-name">Heat-Sensitive Magic Mug</h3></div>
           </div>
           <div class="card">
             <img src="photo_2026-05-30_04-27-31.jpg" alt="Heart Shape Family Photo Mug" loading="lazy" />
             <div class="card-info"><p class="card-tag">Artisan Mug</p><h3 class="card-name">Heart Shape Family Photo Mug</h3></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-panel" id="panel-pod-products">
+        <div class="product-grid">
+          <div class="card wide">
+            <img src="photo_2026-05-30_04-26-57.jpg" alt="Featured Custom Work" loading="lazy" />
+            <div class="card-info"><p class="card-tag">POD Featured</p><h3 class="card-name">Bespoke Photo Collage Print</h3></div>
+          </div>
+          <div class="card">
+            <img src="photo_2026-05-30_04-26-55 (4).jpg" alt="Typography Art" loading="lazy" />
+            <div class="card-info"><p class="card-tag">POD Apparel</p><h3 class="card-name">Typography Personalized Wear</h3></div>
+          </div>
+          <div class="card">
+            <img src="photo_2026-05-30_04-27-31.jpg" alt="Artisan Ceramic Showcase" loading="lazy" />
+            <div class="card-info"><p class="card-tag">POD Ceramics</p><h3 class="card-name">Heart-Shaped Artisan Mugs</h3></div>
+          </div>
+          <div class="card">
+            <img src="photo_2026-05-30_04-26-56 (3).jpg" alt="3D Print Bedding" loading="lazy" />
+            <div class="card-info"><p class="card-tag">POD Home Decor</p><h3 class="card-name">3D Sublimation Luxury Bedding</h3></div>
           </div>
         </div>
       </div>
@@ -923,17 +927,59 @@
         <div class="section-intro-count" aria-hidden="true">02</div>
       </div>
       <div class="process-grid">
-        <div class="process-card reveal"><div class="process-num">01</div><p class="process-name">Reach Out</p><p class="process-desc">Share your Vision.</p><div class="process-accent"></div></div>
-        <div class="process-card reveal"><div class="process-num">02</div><p class="process-name">Design</p><p class="process-desc">Custom Layout.</p><div class="process-accent"></div></div>
-        <div class="process-card reveal"><div class="process-num">03</div><p class="process-name">Production</p><p class="process-desc">Precision Crafting.</p><div class="process-accent"></div></div>
-        <div class="process-card reveal"><div class="process-num">04</div><p class="process-name">Delivery</p><p class="process-desc">Carefully Packaged.</p><div class="process-accent"></div></div>
+        <div class="process-card reveal">
+          <div class="process-num">01</div>
+          <p class="process-name">Reach Out</p>
+          <p class="process-desc">Share Your Vision. Send us your ideas, photos, or inspirations.</p>
+          <div class="process-accent"></div>
+        </div>
+        <div class="process-card reveal">
+          <div class="process-num">02</div>
+          <p class="process-name">Design</p>
+          <p class="process-desc">Bespoke Layout. We weave your memories into premium custom concepts.</p>
+          <div class="process-accent"></div>
+        </div>
+        <div class="process-card reveal">
+          <div class="process-num">03</div>
+          <p class="process-name">Production</p>
+          <p class="process-desc">Precision Crafting. Merging artisan quality with finest custom prints.</p>
+          <div class="process-accent"></div>
+        </div>
+        <div class="process-card reveal">
+          <div class="process-num">04</div>
+          <p class="process-name">Delivery</p>
+          <p class="process-desc">Carefully Packaged. Handled with love, delivered straight to your door.</p>
+          <div class="process-accent"></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="contact" class="cta-section">
+  <section class="testimonial-section">
     <div class="wrap-sm">
+      <p class="testimonial-quote">
+        The quality completely blew me away. I ordered a custom blanket
+        for my mom's birthday and she cried when she opened it. This is
+        what a real gift feels like.
+      </p>
+      <p class="testimonial-attr">— Sarah K., Verified Customer</p>
+    </div>
+  </section>
+
+  <section id="contact" class="cta-section">
+    <div class="wrap-sm" style="text-align:center">
+      <p class="eyebrow" style="justify-content:center;display:flex;align-items:center;gap:0;margin-bottom:10px">
+        <span class="rule-h"></span>Let's Create Together
+      </p>
+      <h2 class="commission-title">
+        Start Your<br><em>Commission</em>
+      </h2>
+      <p style="font-size:15px;color:var(--mist);max-width:520px;margin:0 auto 36px;line-height:1.9">
+        Have a vision? We'd love to bring it to life.<br>Every order is a unique creation.
+      </p>
       <a href="mailto:nuzziofficial@gmail.com" class="cta-email">nuzziofficial@gmail.com</a>
+      <div class="cta-divider"></div>
+      <p class="cta-tagline">Custom prints · Home & Living · Apparel · Drinkware · POD Products</p>
     </div>
   </section>
 
